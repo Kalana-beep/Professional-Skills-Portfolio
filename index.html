@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Professional Skills Portfolio of Kalana Premasiri - Computer Science Student">
+  <title>Kalana Premasiri | Professional Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg-primary: #FDF8F0;
+      --bg-secondary: #FFFFFF;
+      --text-primary: #2C2A29;
+      --text-secondary: #7E6B58;
+      --accent: #C9A87C;
+      --accent-dark: #B28B5E;
+      --card-bg: #FFFFFF;
+      --border: #F0E4D4;
+      --shadow: rgba(0, 0, 0, 0.05);
+      --hero-bg: linear-gradient(135deg, #F5EDE2 0%, #EBE0D0 100%);
+    }
+    body.dark {
+      --bg-primary: #1A1A2E;
+      --bg-secondary: #16213E;
+      --text-primary: #EEEEEE;
+      --text-secondary: #B8B8B8;
+      --card-bg: #0F3460;
+      --border: #2D3A5E;
+      --shadow: rgba(0, 0, 0, 0.3);
+      --hero-bg: linear-gradient(135deg, #0F2027, #203A43, #2C5364);
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      transition: all 0.3s;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    main { flex: 1; }
+    .loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-primary); display: flex; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.5s; }
+    .loader.hidden { opacity: 0; pointer-events: none; }
+    .spinner { width: 50px; height: 50px; border: 5px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 1s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #particleCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; opacity: 0.3; }
+    .progress-bar { position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: var(--accent); z-index: 1000; transition: width 0.1s; }
+    .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: var(--accent); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 99; border: none; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+    .back-to-top.show { opacity: 1; visibility: visible; }
+    nav { position: sticky; top: 0; background: rgba(255,255,245,0.92); backdrop-filter: blur(12px); z-index: 100; padding: 1rem 2rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; border-bottom: 1px solid var(--border); }
+    body.dark nav { background: rgba(22,30,62,0.92); }
+    .logo { font-weight: 800; font-size: 1.5rem; color: var(--accent); }
+    .nav-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .nav-links a { text-decoration: none; color: var(--text-primary); font-weight: 500; transition: 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .dark-toggle { background: none; border: none; font-size: 1.3rem; cursor: pointer; color: var(--text-primary); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+    section { margin-bottom: 3rem; scroll-margin-top: 80px; }
+    h2 { font-size: 2rem; margin-bottom: 1.5rem; border-left: 5px solid var(--accent); padding-left: 1rem; }
+    .hero { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem; background: var(--hero-bg); border-radius: 2rem; padding: 3rem; transition: background 0.3s; }
+    .hero-content { flex: 1; }
+    .hero-content h1 { font-size: 3rem; margin-bottom: 0.5rem; }
+    .hero-content .title { font-size: 1.2rem; color: var(--accent-dark); margin-bottom: 1rem; }
+    .hero-content p { margin-bottom: 1rem; }
+    .social-links { display: flex; gap: 1rem; margin: 1rem 0; }
+    .social-links a { color: var(--text-secondary); font-size: 1.5rem; transition: 0.2s; }
+    .social-links a:hover { color: var(--accent); transform: translateY(-2px); }
+    .btn { display: inline-block; background: var(--accent); color: white; padding: 0.6rem 1.2rem; border-radius: 60px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; transition: 0.2s; }
+    .btn:hover { background: var(--accent-dark); transform: translateY(-2px); }
+    .hero-image { flex: 0.3; text-align: center; }
+    .hero-image img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 4px solid white; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    .stats { display: flex; gap: 2rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .stat-card { background: var(--card-bg); padding: 1rem; border-radius: 1rem; text-align: center; flex: 1; box-shadow: 0 4px 6px var(--shadow); }
+    .search-filter { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
+    .search-filter input, .search-filter select { padding: 0.6rem 1rem; border-radius: 60px; border: 1px solid var(--border); background: var(--card-bg); color: var(--text-primary); flex: 1; }
+    .modules-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.8rem; }
+    .module-card { background: var(--card-bg); border-radius: 1.5rem; padding: 1.2rem; cursor: pointer; transition: all 0.3s; border: 1px solid var(--border); }
+    .module-card:hover { transform: translateY(-6px); box-shadow: 0 20px 30px var(--shadow); border-color: var(--accent); }
+    .module-icon { font-size: 2rem; color: var(--accent); margin-bottom: 0.5rem; }
+    .module-card h3 { font-size: 1.2rem; margin-bottom: 0.3rem; }
+    .lecturer-preview { display: flex; align-items: center; gap: 8px; margin: 0.5rem 0; }
+    .lecturer-preview img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; overflow-y: auto; backdrop-filter: blur(5px); }
+    .modal-content { max-width: 850px; margin: 2rem auto; background: var(--bg-secondary); border-radius: 1.5rem; padding: 2rem; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.3); }
+    .modal-close { position: absolute; right: 1.2rem; top: 1rem; font-size: 1.8rem; cursor: pointer; color: var(--text-secondary); transition: 0.2s; }
+    .modal-close:hover { color: var(--accent); }
+    .modal-nav { display: flex; justify-content: space-between; margin-top: 2rem; gap: 1rem; }
+    .modal-nav button { flex: 1; }
+    .lecturers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.5rem; }
+    .lecturer-card { background: var(--card-bg); border-radius: 1rem; padding: 1rem; text-align: center; border: 1px solid var(--border); transition: 0.2s; }
+    .lecturer-card img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 0.5rem; border: 2px solid var(--accent); }
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+    /* About Me image size reduction */
+    .about-image {
+      flex: 0.4;
+      text-align: center;
+    }
+    .about-image img {
+      max-width: 180px;
+      width: 100%;
+      border-radius: 1rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    @media (max-width: 768px) { 
+      nav { flex-direction: column; } 
+      .hero { flex-direction: column; text-align: center; } 
+      .stats { flex-direction: column; } 
+      .modal-content { margin: 1rem; padding: 1.2rem; }
+      .about-image { flex: 1; margin-top: 1rem; }
+    }
+    /* modal content spacing and bullet styles */
+    .modal-content h2 { margin-top: 0; margin-bottom: 1rem; border-left: none; padding-left: 0; }
+    .modal-content h3 { margin: 1.2rem 0 0.5rem 0; color: var(--accent-dark); font-weight: 600; }
+    .modal-content p { margin-bottom: 1rem; }
+    .modal-content ul, .modal-content ol { margin: 0.75rem 0 1rem 1.5rem; }
+    .modal-content li { margin-bottom: 0.4rem; }
+    .reflection-box { background: var(--bg-primary); padding: 1rem 1.2rem; border-left: 4px solid var(--accent); margin-top: 1.2rem; border-radius: 0.8rem; }
+  </style>
+</head>
+<body>
+<div class="loader" id="loader"><div class="spinner"></div></div>
+<canvas id="particleCanvas"></canvas>
+<div class="progress-bar" id="progressBar"></div>
+<button class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+<nav>
+  <div class="logo">G.K.L.Premasiri</div>
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#modules">Skills Portfolio</a>
+    <a href="#lecturers">Lecturers</a>
+  </div>
+  <button class="dark-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button>
+</nav>
+
+<main>
+  <section id="home" class="container">
+    <div class="hero">
+      <div class="hero-content">
+        <h1>G.K.L.Premasiri</h1>
+        <div class="title">Computer Science Undergraduate | SA24610766</div>
+        <p>Passionate about software development and learning new technologies. I enjoy building useful applications and improving my technical and professional skills. My goal is to create impactful software solutions.</p>
+        <div class="social-links">
+          <a href="https://github.com/Kalana-beep" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/kalana-premasiri" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="mailto:kalanapremasirii@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+        <a href="images/Kalana Lakshan Premasiri_CVvv.pdf" download class="btn" id="downloadCVBtn"><i class="fas fa-download"></i> Download CV</a>
+        <div class="stats">
+          <div class="stat-card"><h3 id="statModules">10</h3><p>Modules</p></div>
+          <div class="stat-card"><h3 id="statHours">100+</h3><p>Learning Hours</p></div>
+          <div class="stat-card"><h3 id="statLecturers">6</h3><p>Lecturers</p></div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="images/Kalana.jpg" alt="Profile Photo" id="profileImg">
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="container">
+    <h2>About Me</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center;">
+      <div style="flex:2">
+        <p>I am a second-year Computer Science student passionate about software development and continuous learning. I enjoy building innovative solutions and improving my technical and professional skills. My career goal is to become a software architect and contribute to impactful technology projects while growing as a software professional.</p>
+        <h3>Technical Skills</h3>
+        <div>HTML/CSS <progress value="85" max="100"></progress> 85%</div>
+        <div>JavaScript <progress value="80" max="100"></progress> 80%</div>
+        <div>React <progress value="70" max="100"></progress> 70%</div>
+        <div>Python <progress value="75" max="100"></progress> 75%</div>
+        <h3>Soft Skills</h3>
+        <div>Communication <progress value="90" max="100"></progress></div>
+        <div>Leadership <progress value="88" max="100"></progress></div>
+        <div>Teamwork <progress value="92" max="100"></progress></div>
+      </div>
+      <div class="about-image">
+        <img src="images/Kalana.jpg" alt="Student">
+      </div>
+    </div>
+  </section>
+
+  <section id="modules" class="container">
+    <h2>Professional Skills Modules</h2>
+    <div class="search-filter">
+      <input type="text" id="moduleSearch" placeholder="Search by title, lecturer...">
+      <select id="moduleFilter">
+        <option value="all">All Categories</option>
+        <option value="Communication">Communication Skills</option>
+        <option value="Professional Development">Professional Development</option>
+        <option value="Ethics">Ethics</option>
+        <option value="Leadership">Leadership</option>
+        <option value="Personal Growth">Personal Growth</option>
+      </select>
+    </div>
+    <div class="modules-grid" id="modulesGrid"></div>
+  </section>
+
+  <section id="lecturers" class="container">
+    <h2>Our Esteemed Lecturers</h2>
+    <div class="lecturers-grid" id="lecturersGrid"></div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2025 Kalana Premasiri | Professional Portfolio | <button id="printBtn" style="background:none;border:none;color:var(--accent);cursor:pointer;">Print</button> | <button id="shareBtn" style="background:none;border:none;color:var(--accent);cursor:pointer;">Share</button></p>
+</footer>
+
+<div id="moduleModal" class="modal">
+  <div class="modal-content">
+    <span class="modal-close">&times;</span>
+    <div id="modalBody"></div>
+    <div class="modal-nav">
+      <button id="prevModule" class="btn">◀ Previous Module</button>
+      <button id="nextModule" class="btn">Next Module ▶</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // FULL DETAILED NOTES FOR EACH MODULE (CLEAR, SPACED, WITH BULLETS)
+  const modules = [
+    { id:1, title:"Emotional Intelligence", lecturer:"Mrs. Hubika Joshi", category:"Personal Growth", shortDesc:"Goleman's competencies, activities", img:"images/topic1.png",
+      fullContent: `
+        <h2>🧠 01 Emotional Intelligence</h2>
+        <p><strong>Key insight:</strong> Academic success alone is not enough — emotional intelligence (understanding & managing emotions) is essential for true success.</p>
+        <h3>❓ What is Emotion?</h3>
+        <p>Emotions consist of: feelings & thoughts, psychological reactions, physical responses, and actions.</p>
+        <h3>📚 Class Activities & Reflection</h3>
+        <ul>
+          <li><strong>Activity 1: Knowing My Emotions</strong> – Choosing my favorite emotion (Love) made me realize how emotions shape thoughts and behavior.</li>
+          <li><strong>Activity 2: Group Discussion</strong> – Analyzing past events using emotional intelligence. I learned: everyone responds differently, empathy leads to peace, and emotions promote teamwork.</li>
+        </ul>
+        <h3>🎯 Goleman’s Five Emotional Competencies</h3>
+        <ul>
+          <li><strong>Self-Awareness</strong> – Knowing feelings & recognizing personal strengths/weaknesses.</li>
+          <li><strong>Self-Regulation</strong> – Controlling feelings using mindfulness, positivity, acceptance.</li>
+          <li><strong>Motivation</strong> – Concentrating on goals despite obstacles.</li>
+          <li><strong>Empathy</strong> – Perceiving others' feelings.</li>
+          <li><strong>Social Skills</strong> – Building relationships through teamwork.</li>
+        </ul>
+        <h3>👑 Leadership & Emotional Intelligence</h3>
+        <p>An emotionally intelligent leader communicates well, inspires others, handles conflicts, and builds trust. The class helped me realize that being a good leader requires deep human interaction.</p>
+        <div class="reflection-box"><strong>✨ Personal Reflection:</strong> This course gave me a new lens on emotions. Knowing myself and others will help me communicate and succeed as a professional.</div>
+      ` },
+    { id:2, title:"Employability Skills", lecturer:"Mrs. Ishara Weerasinghe", category:"Professional Development", shortDesc:"Soft skills, Johari Window", img:"images/topic2.png",
+      fullContent: `<h2>💼 02 Employability Skills</h2><p>Beyond academics, communication, teamwork, leadership, adaptability, and ethics shape career success.</p>
+      <h3>📌 Professional Skill Map</h3><ul><li>Communication – Expressing oneself effectively</li><li>Teamwork – Valuing others' ideas</li><li>Leadership – Taking initiative and guiding others</li><li>Problem Solving – Analysing and proposing solutions</li><li>Adaptability – Adjusting to new obstacles</li><li>Time Management – Efficient planning</li></ul>
+      <h3>🪟 Johari Window Model</h3><p>Open Area (known to self & others), Blind Area (observed by others), Hidden Area (private feelings), Unknown Area (untapped potential). Enhanced my self-awareness and public speaking confidence.</p>
+      <h3>📈 My Growth Reflection</h3><p>Success requires both technical expertise and soft skills. Leadership is about guiding and responsibility, not giving orders. Future plan: improve communication, confidence, and time management.</p>
+      <div class="reflection-box"><strong>✨ Personal Reflection:</strong> Technical knowledge opens doors, but professional skills help me grow inside those opportunities.</div>` },
+    { id:3, title:"CV Writing", lecturer:"Mrs. Ishara Weerasinghe", category:"Professional Development", shortDesc:"Tailoring, ATS", img:"images/topic3.png",
+      fullContent: `<h2>📄 03 CV Writing</h2><p><strong>Definition:</strong> An all-inclusive resume covering education to skills. Purpose: display eligibility impressively.</p>
+      <h3>❓ Why Your CV Matters</h3><ul><li>First impressions – sets you apart before interview</li><li>Shortlisting aid for HR recruiters</li><li>ATS-friendly – include keywords from job advert</li></ul>
+      <h3>📋 Essential Components</h3><ul><li>Personal Details, Career Objective (2-3 sentences focusing on relevant skills)</li><li>Experience (Job title, organization, duration – use strong words and numbers)</li><li>Educational Qualification, Skills (Soft & Hard), Accomplishments & Awards</li></ul>
+      <h3>✅ Do's & ❌ Avoid</h3><ul><li><strong>Do's:</strong> consistent headings, bullet points, quantify achievements, error-free writing.</li><li><strong>Avoid:</strong> spelling mistakes, irrelevant content, wrong format, generic summary.</li></ul>
+      <h3>🎯 Tailoring Strategy</h3><p>Analyze job description → tailor resume → rewrite professional summary each time → use keywords from job ad.</p>
+      <div class="reflection-box"><strong>✨ Personal Reflection:</strong> A CV is a living document that must speak directly to each employer's needs.</div>` },
+    { id:4, title:"Portfolio Writing", lecturer:"Mrs. Ishara Weerasinghe", category:"Professional Development", shortDesc:"Types & platforms", img:"images/topic4.png",
+      fullContent: `<h2>📁 04 Portfolio Writing</h2><p><strong>What is a Portfolio?</strong> A professional collection of skills, achievements, and work samples.</p>
+      <h3>🎯 Uses & Types</h3><ul><li>Job applications & career growth</li><li>Creative industries (art, design, photography)</li><li>Educational assessment & personal branding</li></ul>
+      <h3>🛠️ How to Build</h3><ul><li>Determine purpose & audience → select format (physical or digital)</li><li>Gather materials: transcripts, certificates, awards</li><li>Showcase accomplishments with measurable evidence</li></ul>
+      <div class="reflection-box"><strong>✨ Personal Reflection:</strong> A portfolio demonstrates growth, skill, and accomplishment effectively.</div>` },
+    { id:5, title:"Code of Ethics", lecturer:"Mr. Nukshan Nismi", category:"Ethics", shortDesc:"Professional responsibility", img:"images/topic5.png",
+      fullContent: `<h2>⚖️ 05 Code of Ethics</h2><p><strong>Profession:</strong> Specialized knowledge + academic training + service to society.</p>
+      <h3>🤝 Responsibilities of Computing Professionals</h3><ul><li><strong>To Clients:</strong> Quality systems, data protection, confidentiality.</li><li><strong>To Employers:</strong> Competent performance, loyalty, follow policies.</li><li><strong>To Society:</strong> Public safety, avoid harm, promote fairness.</li></ul>
+      <h3>🏛️ Professional Bodies</h3><ul><li>CSSL, IEEE, ACM – values: honesty, privacy, avoid harm.</li></ul>
+      <div class="reflection-box"><strong>✨ Personal Reflection:</strong> Ethics are as important as technical skills in computing.</div>` },
+    { id:6, title:"Interview Skills", lecturer:"Mrs. Ishara Weerasinghe", category:"Communication", shortDesc:"STAR method", img:"images/topic6.png",
+      fullContent: `<h2>🎤 06 Interview Skills</h2><p><strong>STAR Method:</strong> Situation, Task, Action, Result – structure answers with measurable examples.</p>
+      <h3>✅ Successful vs ❌ Unsuccessful</h3><ul><li>Successful: research, eye contact, ask questions.</li><li>Unsuccessful: vague answers, little preparation.</li></ul>
+      <h3>📋 Preparation Checklist</h3><ul><li>Research company, dress appropriately, arrive early, practice answers.</li></ul>
+      <div class="reflection-box"><strong>✨ Personal Reflection:</strong> Body language and STAR are crucial for interview success.</div>` },
+    { id:7, title:"Telephone & Email Etiquette", lecturer:"Mrs. Ishara Weerasinghe", category:"Communication", shortDesc:"Professional calls", img:"images/topic7.png",
+      fullContent: `<h2>📞 07 Telephone & Email Etiquette</h2><h3>📞 Telephone – 7 Steps</h3><ol><li>Answer promptly</li><li>Introduce yourself</li><li>Give full attention</li><li>Take notes</li><li>Avoid annoying habits</li><li>Handle professionally</li><li>End positively</li></ol>
+      <h3>✉️ Email Etiquette</h3><ul><li>Formal style, clear subject, proper salutation, sign with full name.</li></ul>
+      <div class="reflection-box"><strong>✨ Personal Reflection:</strong> Tone and word choice matter greatly in professional communication.</div>` },
+    { id:8, title:"Negotiation Skills", lecturer:"Mrs. Maneesha Aishcharya", category:"Leadership", shortDesc:"BATNA", img:"images/topic8.png",
+      fullContent: `<h2>🤝 08 Negotiation Skills</h2><p><strong>“You get what you negotiate.” – Harvey Mackay</strong></p>
+      <h3>♟️ BATNA</h3><p>Best Alternative To a Negotiated Agreement – know your walkaway point.</p>
+      <h3>💎 7 Key Principles</h3><ul><li>People before problems, focus on interests, invest in options, co-own the process.</li></ul>
+      <div class="reflection-box"><strong>✨ Personal Reflection:</strong> Negotiation is about creating positive outcomes, not winning battles.</div>` },
+    { id:9, title:"Grooming Etiquettes", lecturer:"Ms. Oshini Wimalasena", category:"Personal Growth", shortDesc:"Professional appearance", img:"images/topic9.png",
+      fullContent: `<h2>👔 09 Grooming Etiquettes</h2><p><strong>Professionalism = Knowledge + Aptitude + Attitude + Action</strong></p>
+      <ul><li>Cleanliness, neat hair, appropriate clothing, confident posture.</li></ul>
+      <h3>✅ Do's & ❌ Avoid</h3><ul><li>Do: be punctual, listen actively, use polite language.</li><li>Avoid: poor hygiene, negative attitude, interruptions.</li></ul>
+      <div class="reflection-box"><strong>✨ Personal Reflection:</strong> Grooming and behaviour shape your professional image.</div>` },
+    { id:10, title:"Dining Etiquettes", lecturer:"Ms. Samudini Sandalika", category:"Personal Growth", shortDesc:"Table manners", img:"images/topic10.png",
+      fullContent: `<h2>🍽️ 10 Dining Etiquettes</h2><p><strong>BMW Rule:</strong> Bread Left, Meal Centre, Water Right.</p>
+      <h3>🌍 Cultural Awareness</h3><ul><li>Japan: slurping is praise; China: serve elders first; India: eat with right hand.</li></ul>
+      <h3>📵 Golden Rules</h3><ul><li>Phone away, engage completely, step out for calls.</li></ul>
+      <div class="reflection-box"><strong>✨ Personal Reflection:</strong> Dining etiquette shows respect and builds professional relationships.</div>` }
+  ];
+
+  const lecturers = [
+    { name:"Mrs. Hubika Joshi", subject:"Emotional Intelligence", intro:"Expert in human psychology", img:"images/topic1.png" },
+    { name:"Mrs. Ishara Weerasinghe", subject:"Employability & CV", intro:"Career development specialist", img:"images/topic2.png" },
+    { name:"Mr. Nukshan Nismi", subject:"Code of Ethics", intro:"Ethical computing advocate", img:"images/topic5.png" },
+    { name:"Mrs. Maneesha Aishcharya", subject:"Negotiation", intro:"Business communication coach", img:"images/topic8.png" },
+    { name:"Ms. Oshini Wimalasena", subject:"Grooming", intro:"Professional image consultant", img:"images/topic9.png" },
+    { name:"Ms. Samudini Sandalika", subject:"Dining Etiquette", intro:"Corporate etiquette trainer", img:"images/topic10.png" }
+  ];
+
+  let currentModuleIndex = 0;
+  let filteredModules = [...modules];
+
+  function renderModules() {
+    const grid = document.getElementById('modulesGrid');
+    const searchTerm = document.getElementById('moduleSearch').value.toLowerCase();
+    const filterCat = document.getElementById('moduleFilter').value;
+    filteredModules = modules.filter(m => 
+      (m.title.toLowerCase().includes(searchTerm) || m.lecturer.toLowerCase().includes(searchTerm)) &&
+      (filterCat === 'all' || m.category === filterCat)
+    );
+    grid.innerHTML = filteredModules.map((m, idx) => `
+      <div class="module-card" data-idx="${idx}">
+        <div class="module-icon"><i class="fas ${getIcon(m.title)}"></i></div>
+        <h3>${m.title}</h3>
+        <div class="lecturer-preview"><img src="${m.img}" onerror="this.src='https://ui-avatars.com/api/?name=${m.lecturer[0]}&background=C9A87C&color=fff'"> <span>${m.lecturer}</span></div>
+        <p>${m.shortDesc}</p>
+      </div>
+    `).join('');
+    document.querySelectorAll('.module-card').forEach(card => {
+      card.addEventListener('click', () => openModule(parseInt(card.dataset.idx)));
+    });
+  }
+
+  function getIcon(title) {
+    if(title.includes('Emotional')) return 'heart';
+    if(title.includes('Employ')) return 'briefcase';
+    if(title.includes('CV')) return 'file-alt';
+    if(title.includes('Portfolio')) return 'folder-open';
+    if(title.includes('Ethics')) return 'scale-balanced';
+    if(title.includes('Interview')) return 'comments';
+    if(title.includes('Telephone')) return 'phone-alt';
+    if(title.includes('Negotiation')) return 'handshake';
+    if(title.includes('Grooming')) return 'user-tie';
+    return 'utensils';
+  }
+
+  function openModule(idx) {
+    currentModuleIndex = idx;
+    const m = filteredModules[idx];
+    const modal = document.getElementById('moduleModal');
+    document.getElementById('modalBody').innerHTML = `
+      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);">
+        <img src="${m.img}" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent);" onerror="this.src='https://ui-avatars.com/api/?name=${m.lecturer[0]}&background=C9A87C&size=70'">
+        <div><strong style="font-size: 1.2rem;">${m.lecturer}</strong><br><span style="color: var(--accent-dark);">Lecturer</span></div>
+      </div>
+      ${m.fullContent}
+    `;
+    modal.style.display = 'block';
+  }
+
+  function renderLecturers() {
+    const grid = document.getElementById('lecturersGrid');
+    grid.innerHTML = lecturers.map(l => `
+      <div class="lecturer-card">
+        <img src="${l.img}" onerror="this.src='https://ui-avatars.com/api/?name=${l.name[0]}&background=C9A87C'">
+        <h4>${l.name}</h4>
+        <p>${l.subject}</p>
+        <small>${l.intro}</small>
+      </div>
+    `).join('');
+  }
+
+  function animateStats() {
+    let modulesCount = modules.length;
+    let counter = 0;
+    const statEl = document.getElementById('statModules');
+    const interval = setInterval(() => {
+      if(counter < modulesCount) { counter++; statEl.innerText = counter; }
+      else clearInterval(interval);
+    }, 30);
+  }
+
+  // Dark Mode
+  const darkToggle = document.getElementById('darkModeToggle');
+  darkToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+  });
+  if(localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
+
+  // Scroll Progress & Back to Top
+  window.addEventListener('scroll', () => {
+    const winScroll = document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - window.innerHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById('progressBar').style.width = scrolled + '%';
+    document.getElementById('backToTop').classList.toggle('show', winScroll > 300);
+  });
+  document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+
+  // Modal close & navigation
+  document.querySelector('.modal-close').onclick = () => document.getElementById('moduleModal').style.display = 'none';
+  document.getElementById('prevModule').onclick = () => {
+    if(currentModuleIndex > 0) openModule(currentModuleIndex-1);
+    else alert('You are at the first module');
+  };
+  document.getElementById('nextModule').onclick = () => {
+    if(currentModuleIndex < filteredModules.length-1) openModule(currentModuleIndex+1);
+    else alert('You have reached the last module');
+  };
+  window.onclick = (e) => { if(e.target === document.getElementById('moduleModal')) document.getElementById('moduleModal').style.display = 'none'; };
+
+  document.getElementById('moduleSearch').addEventListener('input', renderModules);
+  document.getElementById('moduleFilter').addEventListener('change', renderModules);
+
+  document.getElementById('printBtn').addEventListener('click', () => window.print());
+  document.getElementById('shareBtn').addEventListener('click', () => {
+    if(navigator.share) navigator.share({title:'Kalana Premasiri Portfolio', url:window.location.href});
+    else alert('Share not supported, copy the link manually');
+  });
+
+  // Particle background
+  const canvas = document.getElementById('particleCanvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+  function createParticles() { for(let i=0;i<60;i++) particles.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, radius:Math.random()*2+1, speedX:(Math.random()-0.5)*0.4, speedY:(Math.random()-0.5)*0.4}); }
+  function drawParticles() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle = '#C9A87C';
+    particles.forEach(p => { ctx.beginPath(); ctx.arc(p.x,p.y,p.radius,0,Math.PI*2); ctx.fill(); p.x+=p.speedX; p.y+=p.speedY; if(p.x<0||p.x>canvas.width) p.speedX*=-1; if(p.y<0||p.y>canvas.height) p.speedY*=-1; });
+    requestAnimationFrame(drawParticles);
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas(); createParticles(); drawParticles();
+
+  // Typing animation for hero name
+  const heroTitle = document.querySelector('.hero-content h1');
+  const originalText = heroTitle.innerText;
+  heroTitle.innerText = '';
+  let i=0;
+  function typeWriter() {
+    if(i < originalText.length) { heroTitle.innerText += originalText.charAt(i); i++; setTimeout(typeWriter, 60); }
+  }
+  setTimeout(typeWriter, 400);
+
+  window.addEventListener('load', () => {
+    document.getElementById('loader').classList.add('hidden');
+    animateStats();
+    renderModules();
+    renderLecturers();
+  });
+</script>
+</body>
+</html>
