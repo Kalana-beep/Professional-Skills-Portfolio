@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Professional Skills Portfolio of Kalana Premasiri - Computer Science Student">
-  <title>Kalana Premasiri | Professional Portfolio</title>
+  <meta name="description" content="Professional Skills Portfolio of G.K.L. Premasiri - Computer Science Student">
+  <title>G.K.L. Premasiri | Professional Skills Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -61,7 +61,6 @@
     .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
     section { margin-bottom: 3rem; scroll-margin-top: 80px; }
     h2 { font-size: 2rem; margin-bottom: 1.5rem; border-left: 5px solid var(--accent); padding-left: 1rem; }
-    /* Hero section - vertical layout */
     .hero {
       display: flex;
       flex-direction: column;
@@ -70,21 +69,12 @@
       background: var(--hero-bg);
       border-radius: 2rem;
       padding: 3rem;
-      transition: background 0.3s;
       gap: 1.5rem;
     }
-    .hero-image img {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid white;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    }
+    .hero-image img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 4px solid white; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
     .hero-content { max-width: 800px; }
     .hero-content h1 { font-size: 3rem; margin-bottom: 0.5rem; }
     .hero-content .title { font-size: 1.2rem; color: var(--accent-dark); margin-bottom: 1rem; }
-    .hero-content p { margin-bottom: 1rem; }
     .social-links { display: flex; justify-content: center; gap: 1rem; margin: 1rem 0; }
     .social-links a { color: var(--text-secondary); font-size: 1.5rem; transition: 0.2s; }
     .social-links a:hover { color: var(--accent); transform: translateY(-2px); }
@@ -92,15 +82,9 @@
     .btn:hover { background: var(--accent-dark); transform: translateY(-2px); }
     .stats { display: flex; gap: 2rem; margin-top: 1.5rem; flex-wrap: wrap; justify-content: center; }
     .stat-card { background: var(--card-bg); padding: 1rem; border-radius: 1rem; text-align: center; flex: 1; min-width: 100px; box-shadow: 0 4px 6px var(--shadow); }
-    /* Search & Filter */
     .search-filter { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
     .search-filter input, .search-filter select { padding: 0.6rem 1rem; border-radius: 60px; border: 1px solid var(--border); background: var(--card-bg); color: var(--text-primary); flex: 1; }
-    /* MODULES GRID - Lecturer photo first, then description */
-    .modules-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
-    }
+    .modules-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
     .module-card {
       background: var(--card-bg);
       border-radius: 1.5rem;
@@ -110,92 +94,37 @@
       border: 1px solid var(--border);
       text-align: center;
     }
-    .module-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 25px 35px var(--shadow);
-      border-color: var(--accent);
-    }
-    /* Lecturer image at the top - large and prominent */
-    .module-lecturer-img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin: 0 auto 1rem auto;
-      display: block;
-      border: 3px solid var(--accent);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    .module-card h3 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-    .module-lecturer-name {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--accent-dark);
-      margin-bottom: 0.5rem;
-    }
-    .module-description {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      line-height: 1.4;
-    }
-    /* Modal */
+    .module-card:hover { transform: translateY(-8px); box-shadow: 0 25px 35px var(--shadow); border-color: var(--accent); }
+    .module-lecturer-img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin: 0 auto 1rem auto; display: block; border: 3px solid var(--accent); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    .module-card h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .module-lecturer-name { font-size: 1rem; font-weight: 600; color: var(--accent-dark); margin-bottom: 0.5rem; }
+    .module-description { font-size: 0.95rem; color: var(--text-secondary); }
     .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; overflow-y: auto; backdrop-filter: blur(5px); }
-    .modal-content { max-width: 850px; margin: 2rem auto; background: var(--bg-secondary); border-radius: 1.5rem; padding: 2rem; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.3); }
-    .modal-close { position: absolute; right: 1.2rem; top: 1rem; font-size: 1.8rem; cursor: pointer; color: var(--text-secondary); transition: 0.2s; }
+    .modal-content { max-width: 850px; margin: 2rem auto; background: var(--bg-secondary); border-radius: 1.5rem; padding: 2rem; position: relative; }
+    .modal-close { position: absolute; right: 1.2rem; top: 1rem; font-size: 1.8rem; cursor: pointer; color: var(--text-secondary); }
     .modal-close:hover { color: var(--accent); }
     .modal-nav { display: flex; justify-content: space-between; margin-top: 2rem; gap: 1rem; }
-    .modal-nav button { flex: 1; }
-    /* Lecturer cards */
     .lecturers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 2rem; }
-    .lecturer-card { background: var(--card-bg); border-radius: 1.5rem; padding: 1.5rem; text-align: center; border: 1px solid var(--border); transition: 0.2s; }
-    .lecturer-card img { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 3px solid var(--accent); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    .lecturer-card { background: var(--card-bg); border-radius: 1.5rem; padding: 1.5rem; text-align: center; border: 1px solid var(--border); }
+    .lecturer-card img { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 3px solid var(--accent); }
     .lecturer-card h4 { font-size: 1.2rem; margin-bottom: 0.3rem; }
-    .lecturer-card p { color: var(--accent-dark); font-weight: 500; margin-bottom: 0.5rem; }
-    .lecturer-card small { color: var(--text-secondary); font-size: 0.85rem; }
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      background: var(--bg-secondary);
-      border-top: 1px solid var(--border);
-      margin-top: 2rem;
-    }
-    /* About Me image size */
-    .about-image {
-      flex: 0.5;
-      text-align: center;
-    }
-    .about-image img {
-      max-width: 220px;
-      width: 100%;
-      border-radius: 1rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    @media (max-width: 768px) { 
-      nav { flex-direction: column; } 
+    .lecturer-card p { color: var(--accent-dark); font-weight: 500; }
+    .lecturer-card small { color: var(--text-secondary); }
+    footer { text-align: center; padding: 1.5rem; background: var(--bg-secondary); border-top: 1px solid var(--border); margin-top: 2rem; }
+    .about-image { flex: 0.5; text-align: center; }
+    .about-image img { max-width: 220px; width: 100%; border-radius: 1rem; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    @media (max-width: 768px) {
       .hero { padding: 2rem; }
       .stats { flex-direction: column; align-items: center; }
-      .stat-card { width: 100%; }
-      .modal-content { margin: 1rem; padding: 1.2rem; }
       .about-image { flex: 1; margin-top: 1rem; }
       .hero-image img { width: 140px; height: 140px; }
-      .about-image img { max-width: 180px; }
-      .lecturer-card img { width: 130px; height: 130px; }
-      .modules-grid { gap: 1.2rem; }
-      .module-card { padding: 1.2rem; }
       .module-lecturer-img { width: 80px; height: 80px; }
-      .module-card h3 { font-size: 1.3rem; }
+      .lecturer-card img { width: 130px; height: 130px; }
     }
-    /* modal content spacing */
-    .modal-content h2 { margin-top: 0; margin-bottom: 1rem; border-left: none; padding-left: 0; }
-    .modal-content h3 { margin: 1.2rem 0 0.5rem 0; color: var(--accent-dark); font-weight: 600; }
-    .modal-content p { margin-bottom: 1rem; }
-    .modal-content ul, .modal-content ol { margin: 0.75rem 0 1rem 1.5rem; }
-    .modal-content li { margin-bottom: 0.4rem; }
-    .reflection-box { background: var(--bg-primary); padding: 1rem 1.2rem; border-left: 4px solid var(--accent); margin-top: 1.2rem; border-radius: 0.8rem; }
+    .modal-content h2, .modal-content h3, .modal-content h4 { margin-top: 1rem; margin-bottom: 0.5rem; }
+    .modal-content ul, .modal-content ol { margin: 0.5rem 0 1rem 1.5rem; }
+    .modal-content li { margin-bottom: 0.3rem; }
+    .reflection-box { background: var(--bg-primary); padding: 1rem; border-left: 4px solid var(--accent); margin: 1rem 0; border-radius: 0.5rem; }
   </style>
 </head>
 <body>
@@ -218,9 +147,7 @@
 <main>
   <section id="home" class="container">
     <div class="hero">
-      <div class="hero-image">
-        <img src="images/Kalana.jpg" alt="Profile Photo" id="profileImg">
-      </div>
+      <div class="hero-image"><img src="images/Kalana.jpg" alt="Profile Photo"></div>
       <div class="hero-content">
         <h1>G.K.L.Premasiri</h1>
         <div class="title">Computer Science Undergraduate | SA24610766</div>
@@ -230,11 +157,11 @@
           <a href="https://www.linkedin.com/in/kalana-premasiri" target="_blank"><i class="fab fa-linkedin"></i></a>
           <a href="mailto:kalanapremasirii@gmail.com"><i class="fas fa-envelope"></i></a>
         </div>
-        <a href="images/Kalana Lakshan Premasiri_CVvv.pdf" download class="btn" id="downloadCVBtn"><i class="fas fa-download"></i> Download CV</a>
+        <a href="images/Kalana Lakshan Premasiri_CVvv.pdf" download class="btn"><i class="fas fa-download"></i> Download CV</a>
         <div class="stats">
           <div class="stat-card"><h3 id="statModules">10</h3><p>Modules</p></div>
-          <div class="stat-card"><h3 id="statHours">100+</h3><p>Learning Hours</p></div>
-          <div class="stat-card"><h3 id="statLecturers">6</h3><p>Lecturers</p></div>
+          <div class="stat-card"><h3>100+</h3><p>Learning Hours</p></div>
+          <div class="stat-card"><h3>6</h3><p>Lecturers</p></div>
         </div>
       </div>
     </div>
@@ -255,9 +182,7 @@
         <div>Leadership <progress value="88" max="100"></progress></div>
         <div>Teamwork <progress value="92" max="100"></progress></div>
       </div>
-      <div class="about-image">
-        <img src="images/Kalana.jpg" alt="Student">
-      </div>
+      <div class="about-image"><img src="images/Kalana.jpg" alt="Student"></div>
     </div>
   </section>
 
@@ -284,7 +209,7 @@
 </main>
 
 <footer>
-  <p>© 2025 Kalana Premasiri | Professional Portfolio | <button id="printBtn" style="background:none;border:none;color:var(--accent);cursor:pointer;">Print</button> | <button id="shareBtn" style="background:none;border:none;color:var(--accent);cursor:pointer;">Share</button></p>
+  <p>© 2025 G.K.L. Premasiri | Professional Portfolio | <button id="printBtn" style="background:none;border:none;color:var(--accent);cursor:pointer;">Print</button> | <button id="shareBtn" style="background:none;border:none;color:var(--accent);cursor:pointer;">Share</button></p>
 </footer>
 
 <div id="moduleModal" class="modal">
@@ -299,29 +224,262 @@
 </div>
 
 <script>
-  // FULL DETAILED NOTES FOR EACH MODULE (keeping content concise but complete)
-  const modules = [
-    { id:1, title:"Emotional Intelligence", lecturer:"Mrs. Hubika Joshi", category:"Personal Growth", shortDesc:"Goleman's competencies, activities", img:"images/topic1.png",
-      fullContent: `<h2>🧠 01 Emotional Intelligence</h2><p><strong>Key insight:</strong> Academic success alone is not enough — emotional intelligence is essential.</p><h3>❓ What is Emotion?</h3><p>Emotions consist of: feelings & thoughts, psychological reactions, physical responses, and actions.</p><h3>📚 Class Activities</h3><ul><li>Activity 1: Knowing My Emotions – Love shapes behavior.</li><li>Activity 2: Group Discussion – Empathy leads to peace, teamwork.</li></ul><h3>🎯 Goleman’s Five Competencies</h3><ul><li>Self-Awareness</li><li>Self-Regulation</li><li>Motivation</li><li>Empathy</li><li>Social Skills</li></ul><div class="reflection-box"><strong>✨ Personal Reflection:</strong> Knowing myself and others is key to success.</div>` },
-    { id:2, title:"Employability Skills", lecturer:"Mrs. Ishara Weerasinghe", category:"Professional Development", shortDesc:"Soft skills, Johari Window", img:"images/topic2.png",
-      fullContent: `<h2>💼 02 Employability Skills</h2><p>Communication, teamwork, leadership, adaptability, ethics.</p><h3>📌 Professional Skill Map</h3><ul><li>Communication</li><li>Teamwork</li><li>Leadership</li><li>Problem Solving</li><li>Adaptability</li><li>Time Management</li></ul><h3>🪟 Johari Window</h3><p>Open, Blind, Hidden, Unknown – improved self-awareness.</p><div class="reflection-box"><strong>✨ Reflection:</strong> Professional skills help me grow.</div>` },
-    { id:3, title:"CV Writing", lecturer:"Mrs. Ishara Weerasinghe", category:"Professional Development", shortDesc:"Tailoring, ATS", img:"images/topic3.png",
-      fullContent: `<h2>📄 03 CV Writing</h2><p><strong>Why it matters:</strong> First impressions, shortlisting, ATS.</p><h3>✅ Do's & ❌ Avoid</h3><ul><li>Do's: consistent headings, quantify achievements.</li><li>Avoid: spelling mistakes, generic content.</li></ul><div class="reflection-box"><strong>✨ Reflection:</strong> Tailor CV to each job.</div>` },
-    { id:4, title:"Portfolio Writing", lecturer:"Mrs. Ishara Weerasinghe", category:"Professional Development", shortDesc:"Types & platforms", img:"images/topic4.png",
-      fullContent: `<h2>📁 04 Portfolio Writing</h2><p>A portfolio shows growth and skills.</p><h3>Types</h3><ul><li>Personal</li><li>Career/Dossier</li><li>Employment</li><li>Assessment</li></ul><div class="reflection-box"><strong>✨ Reflection:</strong> A portfolio demonstrates competence.</div>` },
-    { id:5, title:"Code of Ethics", lecturer:"Mr. Nukshan Nismi", category:"Ethics", shortDesc:"Professional responsibility", img:"images/topic5.png",
-      fullContent: `<h2>⚖️ 05 Code of Ethics</h2><p><strong>Responsibilities:</strong> To clients, employers, society.</p><h3>Professional Bodies</h3><ul><li>CSSL, IEEE, ACM</li></ul><div class="reflection-box"><strong>✨ Reflection:</strong> Ethics are as important as technical skills.</div>` },
-    { id:6, title:"Interview Skills", lecturer:"Mrs. Ishara Weerasinghe", category:"Communication", shortDesc:"STAR method", img:"images/topic6.png",
-      fullContent: `<h2>🎤 06 Interview Skills</h2><p><strong>STAR Method:</strong> Situation, Task, Action, Result.</p><h3>Preparation Checklist</h3><ul><li>Research company</li><li>Practice answers</li><li>Arrive early</li></ul><div class="reflection-box"><strong>✨ Reflection:</strong> STAR and body language are crucial.</div>` },
-    { id:7, title:"Telephone & Email Etiquette", lecturer:"Mrs. Ishara Weerasinghe", category:"Communication", shortDesc:"Professional calls", img:"images/topic7.png",
-      fullContent: `<h2>📞 07 Telephone & Email Etiquette</h2><h3>Telephone – 7 Steps</h3><ol><li>Answer</li><li>Introduce</li><li>Full attention</li><li>Take notes</li><li>Avoid bad habits</li><li>Handle professionally</li><li>End positively</li></ol><h3>Email</h3><ul><li>Formal style, clear subject, proper salutation</li></ul><div class="reflection-box"><strong>✨ Reflection:</strong> Tone matters greatly.</div>` },
-    { id:8, title:"Negotiation Skills", lecturer:"Mrs. Maneesha Aishcharya", category:"Leadership", shortDesc:"BATNA", img:"images/topic8.png",
-      fullContent: `<h2>🤝 08 Negotiation Skills</h2><p><strong>BATNA</strong> – Best Alternative To a Negotiated Agreement.</p><h3>7 Key Principles</h3><ul><li>People before problems</li><li>Focus on interests</li></ul><div class="reflection-box"><strong>✨ Reflection:</strong> Negotiation creates positive outcomes.</div>` },
-    { id:9, title:"Grooming Etiquettes", lecturer:"Ms. Oshini Wimalasena", category:"Personal Growth", shortDesc:"Professional appearance", img:"images/topic9.png",
-      fullContent: `<h2>👔 09 Grooming Etiquettes</h2><p><strong>Professionalism = Knowledge + Aptitude + Attitude + Action</strong></p><ul><li>Cleanliness, neat hair, confident posture</li></ul><div class="reflection-box"><strong>✨ Reflection:</strong> Grooming shapes your image.</div>` },
-    { id:10, title:"Dining Etiquettes", lecturer:"Ms. Samudini Sandalika", category:"Personal Growth", shortDesc:"Table manners", img:"images/topic10.png",
-      fullContent: `<h2>🍽️ 10 Dining Etiquettes</h2><p><strong>BMW Rule:</strong> Bread Left, Meal Centre, Water Right.</p><h3>Cultural Awareness</h3><ul><li>Japan: slurping is praise</li><li>China: serve elders first</li></ul><div class="reflection-box"><strong>✨ Reflection:</strong> Dining etiquette shows respect.</div>` }
-  ];
+  // ==============================
+  // FULL DETAILED NOTES FOR EACH MODULE (Office Survival Challenge removed from module 7)
+  // ==============================
+  const modulesData = {
+    1: {
+      title: "Emotional Intelligence",
+      lecturer: "Mrs. Hubika Joshi",
+      category: "Personal Growth",
+      shortDesc: "Goleman's competencies, activities, self-reflection",
+      img: "images/topic1.png",
+      fullContent: `
+        <h2>🧠 01 Emotional Intelligence</h2>
+        <p><strong>Conducted by:</strong> Mrs. Hubika Joshi</p>
+        <p>Considering all the above, many lessons can be derived from my Professional Skills class, but the lesson that is more important than any other lesson that I can remember is the lesson regarding emotional intelligence. There was a time in my life when I realized that no matter how much knowledge one has academically and professionally, he/she will never succeed in life without having emotions too.</p>
+        <h3>Key Concepts Learned</h3>
+        <h3>❓ What is Emotion?</h3>
+        <p>As described in the lecture, emotions are not just feelings but they consist of:</p>
+        <ul><li>Feelings and thoughts</li><li>Psychological reactions</li><li>Physical responses</li><li>Actions</li></ul>
+        <h3>📚 Class Activities and My Reflection</h3>
+        <p>These exercises provided me with practice in using the theory in real-life situations.</p>
+        <p><strong>Activity 1: Knowing My Emotions Better</strong><br>It was an exercise where every person had to choose his favorite emotions and also the emotion which plays the most important part in his/her life. This exercise made me realize more about the impact of emotions on a person's thought process and behavior. Actually, I wrote on a paper that my favourite emotion is love.</p>
+        <p><strong>Activity 2: Discussion within the Group</strong><br>In particular, we were asked to think about some event from our past and analyze how we used emotional intelligence in order to find a way out of the situation. Later, one member of our team had to present this discussion in front of all students in the lecture hall.</p>
+        <p><strong>By doing this activity, I learned that:</strong></p>
+        <ul><li>Everyone responds differently to different situations.</li><li>Listening and empathy lead to peace.</li><li>Emotions promote teamwork.</li></ul>
+        <h3>🎯 Emotional Intelligence (EI)</h3>
+        <p>Emotional intelligence is when you can be aware of your own emotions and those of others, comprehend them, and manage them.</p>
+        <p>In this comparison, I understood that it is not only about the acquisition of knowledge. Rather, it requires emotional quotient and effective communication skills to become successful.</p>
+        <h3>📊 Goleman's Five Emotional Competencies</h3>
+        <ul><li><strong>1. Self-Awareness:</strong> Knowing how one feels and recognizing personal strengths and weaknesses. <em>My learning:</em> Knowing my feelings was the initial step in controlling them.</li>
+        <li><strong>2. Self-Regulation:</strong> Controlling our feelings and reactions. Methods used to control include: Mindfulness, Positivism, Acceptance. Though it may not always be easy to act immediately, but with self-control, it becomes easier to make well thought out decisions.</li>
+        <li><strong>3. Motivation:</strong> Ability to concentrate and apply oneself in order to achieve set targets despite problems encountered.</li>
+        <li><strong>4. Empathy:</strong> Ability to perceive how others feel about certain things.</li>
+        <li><strong>5. Social Skills:</strong> Establishing relations through teamwork.</li></ul>
+        <h3>👑 Leadership and Emotional Intelligence</h3>
+        <p>Another area covered in class was the relationship between leadership and emotional intelligence. For any good leader, it is not enough to have information alone the person should also be able to understand people and connect with them.</p>
+        <p>An emotionally intelligent leader is one who can: Communicate well, Inspire others, Handle conflicts, Create a sense of trust. The class helped me realize that being a good leader requires a lot of human interaction.</p>
+        <div class="reflection-box"><strong>✨ Personal Reflection:</strong> Overall, this course has provided me with an opportunity to approach emotions in a new way. The third concept learned in class is called emotional intelligence, which explains how one can attain it. The main benefit I received from this course is that when one knows himself or herself and others, he or she is able to communicate successfully and be a successful professional.</div>
+      `
+    },
+    2: {
+      title: "Employability Skills",
+      lecturer: "Mrs. Ishara Weerasinghe",
+      category: "Professional Development",
+      shortDesc: "Soft skills, Johari Window, professional identity",
+      img: "images/topic2.png",
+      fullContent: `
+        <h2>💼 02 Employability Skills</h2>
+        <p><strong>Conducted by:</strong> Mrs. Ishara Weerasinghe</p>
+        <p>From this lecture, I have learned with respect to the development of certain abilities among professionals. Prior to enrolling for this lecture, I only thought about learning academic skills. However, now that I have enrolled in this lecture, I realize that other skills such as communication skills, team working skills, leadership skills, adaptability skills, and professional ethics also need to be acquired to ensure success in my career life.</p>
+        <h3>📌 The Professional Skill Map</h3>
+        <ul><li>Communication: Expressing oneself effectively to enhance communication and relationships with other people.</li><li>Teamwork: Writing alongside other people while valuing their ideas and duties.</li><li>Leadership: Bearing initiative, leading others, and taking up responsibilities.</li><li>Problem Solving: Analysing circumstances and proposing solutions.</li><li>Adaptability: Adjusting one's approach in case of new obstacles.</li><li>Time Management: Efficiently managing one's time.</li></ul>
+        <h3>⭐ Employability Skills I Discovered</h3>
+        <ul><li><strong>Soft Skills:</strong> Communication, Emotional awareness, Team interaction, Professional behaviour.</li><li><strong>Transferable Skills:</strong> Decision making, Critical thinking, Creativity, Responsibility.</li><li><strong>Workplace Skills:</strong> Collaboration, Discipline, Positive attitude.</li></ul>
+        <h3>🏗️ Building My Professional Identity</h3>
+        <ul><li>Communication: My confidence and listening skills need improvement in this area.</li><li>Teamwork: The idea that teamwork means teamwork and not personal efforts finally occurred to me.</li><li>Leadership: Knowledge on leadership is not only about leadership but also guiding others.</li><li>Time Management: I can avoid stress through proper planning.</li><li>Adaptability: In order to become professional, an individual has to adapt himself to the situation.</li></ul>
+        <h3>🪟 Johari Window</h3>
+        <p>As per Lecture 01, the Johari Window Model made me aware of myself in many ways and enhanced my self‑knowledge and improved my self‑awareness. The Johari Window Model consists of four quadrants, namely, Open Area (things known both to me and others, for example, teamwork and communication), Blind Area (those things observed by others but not realized by me, for example, confidence during public speaking), Hidden Area (my own feelings and thoughts that are kept secret), and Unknown Area (untapped potential of mine that could only be discovered through experience).</p>
+        <h3>📈 My Growth Reflection</h3>
+        <p>Prior to this class, my main concern was gaining technical knowledge as I considered this to be the most critical element of a successful career. But through attending this class, I got to know that success not only involves technical expertise, but also other factors such as soft skills. During this session, I came to know that collaboration does not involve just doing tasks in groups, but it involves cooperation and support of each other as well. Moreover, leadership is not all about giving commands, it also involves taking responsibilities for others.</p>
+        <h3>📋 My Future Development Plan</h3>
+        <ul><li>Increase communication abilities using presentations and discussion.</li><li>Gain confidence when you share your opinions and participate in activities.</li><li>Acquire leadership abilities by accepting responsibility during teamwork.</li><li>Manage time properly using effective planning.</li></ul>
+        <div class="reflection-box"><strong>✨ Personal Reflection:</strong> It opened up a new outlook on becoming a professional for me. I came to understand that while technical knowledge could provide opportunities for me, professional knowledge will be helpful in my development and success in those opportunities. It motivated me to develop myself both as a student and as a professional.</div>
+      `
+    },
+    3: {
+      title: "CV Writing",
+      lecturer: "Mrs. Ishara Weerasinghe",
+      category: "Professional Development",
+      shortDesc: "Tailoring, ATS, formatting",
+      img: "images/topic3.png",
+      fullContent: `
+        <h2>📄 03 CV Writing</h2>
+        <p><strong>Conducted by:</strong> Mrs. Ishara Weerasinghe</p>
+        <p><strong>What is a CV?</strong> An all-inclusive resume that will cover everything from your education to our skills. Purpose: In order to display our eligibility for a particular job in an impressive manner to the employer.</p>
+        <h3>❓ Why Does Our CV Matter?</h3>
+        <ul><li>First Impressions Matter – Sets us apart from other applicants before an interview.</li><li>Shortlisting Aid – HR recruiters can employ it to determine whose CVs to shortlist for interviews.</li><li>Matching = More Opportunities – Your CV should match the job role.</li><li>ATS-Friendly – Including keywords from the job advert is vital.</li></ul>
+        <h3>📋 Essential Components of a CV</h3>
+        <ul><li>Personal Details: Full Name, Contact Number, Email Address, Present Location, LinkedIn URL / Portfolio (Optional).</li><li>Career Objective: Here is where we need to put down our career objective in 2-3 sentences. In this regard, try to focus on those skill sets that will be relevant to the job profile.</li><li>Experience: Job Title, Organization Name, Duration of Stay (Chronological Order) · Strong words and numbers, whenever applicable.</li><li>Educational Qualification: Programme, Subject Stream, Institute Name, Date of Completion · Optional: Achievements, Dissertation Work.</li><li>Skills: Soft & Hard Skills · Two distinct sections · List only those that we possess.</li><li>Accomplishments & Awards: Any certificates or recognition received.</li></ul>
+        <h3>✅ Formatting – Do's vs. Avoid</h3>
+        <ul><li><strong>Do's:</strong> Consistent use of headings in the document. Use of bullet points and white spaces correctly. Right font style - Calibri/Arial, size 11/12. Measurement of performance ("Raised sales by 20%"). Error-free, concise writing.</li>
+        <li><strong>Avoid:</strong> Spelling and grammar mistakes. Facts that are either irrelevant or outdated. Too much writing or too little writing. Wrong format. Generic and unsuitable for the job.</li></ul>
+        <h3>🎯 Tailoring Your CV — Step by Step</h3>
+        <ol><li>Analyze the job description carefully: Underline key phrases, skill set required, and responsibilities of the job.</li><li>Tailor your resume accordingly: Emphasize only those experiences and projects which have relevance to the job description.</li><li>Rewrite your Professional Summary: Tailor it every time to the job being applied for – no "one size fits all".</li><li>Follow the language: Use the terms used in the job ad and CVs will rank better in ATS.</li></ol>
+        <div class="reflection-box"><strong>✨ Personal Reflection:</strong> Prior to attending this lecture, my understanding of a CV was that it was a fixed piece of paper which you sent to everyone. However, following this lecture, I have understood the importance of tailoring the resume according to each and every job post. The most important thing for me from this lecture was the concept of tailoring. It does not mean only writing about your past achievements. It means writing something which the employer requires from you. It includes font consistency, proper format, and not including any unnecessary things which will waste the space of your resume.</div>
+      `
+    },
+    4: {
+      title: "Portfolio Writing",
+      lecturer: "Mrs. Ishara Weerasinghe",
+      category: "Professional Development",
+      shortDesc: "Types, platforms, building strategy",
+      img: "images/topic4.png",
+      fullContent: `
+        <h2>📁 04 Portfolio Writing</h2>
+        <p><strong>Conducted by:</strong> Mrs. Ishara Weerasinghe</p>
+        <p><strong>What is a Portfolio?</strong> A professional/personal collection of skills, achievements, and work samples and the difference between organized and disorganized work.</p>
+        <h3>🎯 Uses of a Portfolio</h3>
+        <ul><li>Job applications (along with advancement) are available for career growth.</li><li>The arts industry includes many types of work, (drawing, painting, etc.) as well as design and photography.</li><li>An educational assessment can be done by existing tests or instruments to assist with admission as well as help the individual improve their performance.</li><li>Freelance or consulting work in business is available to help individuals create new businesses.</li><li>Individuals can create an identity for themselves through personal branding and either network or change their career.</li></ul>
+        <h3>📂 Types of Portfolios</h3>
+        <ul><li><strong>Personal Portfolio:</strong> An exhibition of your sense of style and creativity.</li><li><strong>Career/Dossier:</strong> Your résumé, cover letter and references.</li><li><strong>Employment (Work) Portfolio:</strong> Examples of your work and performance evaluations.</li><li><strong>Assessment Portfolio:</strong> This contains proof of completion (test results, skills assessments, etc.) for the completion of your formal education.</li></ul>
+        <h3>🛠️ How to Build an Assessment Portfolio</h3>
+        <ol><li>Determine a purpose and qualify an audience.</li><li>Select a format such as a physical (binder) or electronic (website/PDF).</li><li>Gather materials: transcripts, work samples, certificates, awards.</li><li>Arrange into categories with headings.</li><li>Showcase accomplishments with concrete numerical figures as well as specific measurable evidence.</li><li>Self-reflection process to document your accomplishments.</li><li>Stay in touch with other individuals (co-workers, family, mentors/tutors).</li></ol>
+        <h3>🌐 Online Portfolio Platforms</h3>
+        <p>LinkedIn, Behance, WordPress, Wix, Google Sites, Adobe Portfolio, GitHub Pages, Squarespace, Portfoliobox.</p>
+        <div class="reflection-box"><strong>✨ Personal Reflection:</strong> I realized through this lesson about portfolio management, that a properly developed portfolio is not simply a collection of documents but rather an effective means of demonstrating one's growth, skill, and accomplishment. I now understand that there are various types of portfolios based on their purpose, as well as that determining the proper format or style for any particular audience or objective is important in terms of success in building a portfolio. By creating an assessment portfolio, I experienced the value of self-reflection and ongoing development and growth that I believe will continue to benefit me through my education and career in both ways moving forward.</div>
+      `
+    },
+    5: {
+      title: "Code of Ethics",
+      lecturer: "Mr. Nukshan Nismi",
+      category: "Ethics",
+      shortDesc: "Professional responsibility, ethical codes",
+      img: "images/topic5.png",
+      fullContent: `
+        <h2>⚖️ 05 Code of Ethics</h2>
+        <p><strong>Conducted by:</strong> Mr. Nukshan Nismi</p>
+        <h3>📖 Key Definitions</h3>
+        <ul><li><strong>Profession:</strong> Specialized knowledge + academic training + service to society.</li><li><strong>Professional:</strong> Expert who works by standards, accepts ethical responsibility.</li><li><strong>Professionalism:</strong> Behavior, commitment to quality, ethical conduct & accountability.</li></ul>
+        <h3>🖥️ Computing Professionals & Their Impact</h3>
+        <p><strong>Computing Professionals:</strong> Software Engineers, System Analysts, Database Admins, Network Engineers, IT Managers.<br><strong>Systems influence:</strong> Healthcare, Finance, Transport, Infrastructure, Communication.</p>
+        <h3>📚 Ethics & Code of Ethics</h3>
+        <ul><li>Ethics can be described as a person's beliefs about the nature of right and wrong (honesty, fairness and respect).</li><li>Ethics provide a foundation to build one's momentum (decisions), stop from causing harm and provide confidence and trust among stakeholders.</li><li>A Code of Ethics is a written document that sets forth the expected behavior of individuals and provides an avenue to resolving dilemmas.</li></ul>
+        <p><strong>The Purpose of a Code of Ethics:</strong> 1. Inspire and provide guidance. 2. To assist in knowledge creation. 3. To define responsibility. 4. To provide a mechanism for disciplinary action.</p>
+        <h3>🤝 Responsibilities of Computing Professionals</h3>
+        <ul><li><strong>To Clients:</strong> Ensure quality systems, data protection, and confidentiality.</li><li><strong>To Employers:</strong> Maintain competent performance, loyalty, and follow company policies.</li><li><strong>To Colleagues:</strong> Promote respect, collaboration, and avoid any form of discrimination.</li><li><strong>To Society:</strong> Prioritize public safety, avoid harm, and promote fairness.</li></ul>
+        <h3>🏛️ Professional Bodies & Their Codes</h3>
+        <ul><li>CSSL: Professionalism, Trustworthiness, Skill, National Development.</li><li>IEEE: Safety, No Bribery, Trustworthiness, Technical Skill.</li><li>ACM: Avoid Harm, Privacy, Confidentiality, Intellectual Property Rights.</li><li>ACM SE Code: Public interest, Management responsibility, Product quality etc.</li></ul>
+        <h3>⚠️ Ethical Dilemmas in Computing</h3>
+        <p>There are many ethical issues with the Tech Industry today ranging from the way Tech companies collect private data on individuals without their consent or its uses in the analysis or research to creating algorithms that result in discrimination against people, or using other companies intellectual property for your own gain, to create software products or services without thoroughly testing them before using them on the market.</p>
+        <p>The process of determining which option is most ethical is accomplished in 4 steps, identifying who are the stakeholders involved, analyzing what the consequences are of your choice of stakeholder, identifying what obligations you have toward each stakeholder and what options can be explored in order to resolve the dilemma of ethical issues.</p>
+        <div class="reflection-box"><strong>✨ Personal Reflection:</strong> Through this lecture I have gained a good sense of what it means to be a computing professional; being a computing professional means having more than technical skills - you also have an ethical responsibility to your clients, employers, fellow workers and society as a whole. The detailed review we had of the CSSL, IEEE and ACM Codes of Ethics has also made me more aware that I will be expected to be honest and truthful while protecting people's rights, privacy etc. and making decisions that take into consideration how my decisions may affect society as a whole. This has motivated me to continue learning how to improve my technical knowledge and continue to reflect upon and improve my ethical practices throughout my future career.</div>
+      `
+    },
+    6: {
+      title: "Interview Skills",
+      lecturer: "Mrs. Ishara Weerasinghe",
+      category: "Communication",
+      shortDesc: "STAR method, 7 C's, preparation",
+      img: "images/topic6.png",
+      fullContent: `
+        <h2>🎤 06 Interview Skills</h2>
+        <p><strong>Conducted by:</strong> Mrs. Ishara Weerasinghe</p>
+        <p><strong>What is a Job Interview?</strong> This process can be summarized as a two - way evaluation, where the interviewer assesses our technical and professional competencies while we determine if the role aligns with your career goals and expectations.</p>
+        <p><strong>What is a CV?</strong> The CV format is a structured, standardized document, usually from 1-2 pages max in length, summarizing our educational credentials and qualifications along with our career's many accomplishments in terms of work-related experiences and job accomplishments. The CV may be referred to as a curriculum vitae, career summary statement or profile statement depending on the location in the world we are applying to.</p>
+        <h3>💬 Communication in Interviews</h3>
+        <h3>✅ Successful vs ❌ Unsuccessful Candidates</h3>
+        <ul><li><strong>Successful:</strong> Use company name, Make eye contact, smiled, Use technical jargon, Give specific answers, Ask questions, Accept topic shifts.</li><li><strong>Unsuccessful:</strong> Don't research company, Little eye contact, Avoided jargon, Vague, short answers, Asked few questions, Resisted topic shifts.</li></ul>
+        <h3>⭐ STAR Method — Structuring Answers</h3>
+        <p><strong>S</strong>ituation, <strong>T</strong>ask, <strong>A</strong>ction, <strong>R</strong>esult</p>
+        <h3>📢 7 C's of Effective Communication</h3>
+        <p>Clear, Concise, Concrete, Correct, Coherent, Complete, Courteous.</p>
+        <h3>📋 Interview Preparation Checklist</h3>
+        <ul><li>Before go into the interview, make sure to check out the company's mission statement and determine what type of culture they have.</li><li>Choose clothes that are appropriate for an interview. This means wearing clean pressed clothing that fits well, neutral colours that make sense on us and that we don't have to worry about anyone seeing our clothing in the office.</li><li>Arrive at the job interview at least fifteen minutes before the time of the interview.</li><li>Preparing opportunities to have our complete certification of all credentials organized into a binder, which is separated by types of credentials and listed in chronological order.</li><li>Prepare answers for all of the interview questions that are typically asked during job interviews and practice the answers to those questions before the day of the interview.</li></ul>
+        <h3>🚫 Key Don'ts</h3>
+        <ul><li>Delayed arrival, Using a mobile phone, Giving a negative reference for former employers, Break into someone's words during their conversation, Sharing an excessive amount of our own personal information with another person, Responding to someone in a pre-planned manner.</li></ul>
+        <h3>💬 Useful Language Phrases</h3>
+        <p>"My main strength is my ability to…" "I recently graduated from… with a degree in…" "I'm looking to further my skills as a…" "From my point of view…/ I firmly believe that…"</p>
+        <div class="reflection-box"><strong>✨ Personal Reflection:</strong> This lecture opened my eyes to the true qualities required to excel in a job interview – it's so much more than just answering questions. It was fascinating to find out how much our body language, including making eye contact, sitting up straight, and speaking clearly, matters compared to actual words. Of all the skills covered, the STAR approach caught my attention since it provides a way to answer questions with conviction. Moving ahead, I plan to conduct mock interviews, study companies extensively, and present myself well.</div>
+      `
+    },
+    7: {
+      title: "Telephone & Email Etiquette",
+      lecturer: "Mrs. Ishara Weerasinghe",
+      category: "Communication",
+      shortDesc: "Professional calls, email rules",
+      img: "images/topic7.png",
+      fullContent: `
+        <h2>📞 07 Telephone & Email Etiquette</h2>
+        <p><strong>Conducted by:</strong> Mrs. Ishara Weerasinghe</p>
+        <p><strong>Why This is Important..?</strong> "You never get a second chance to make a first impression" — Caller forms an impression of your business in just 6 seconds. 75% of adults admit using the phone in the bathroom. 80% say eating while on the phone is considered rude.</p>
+        <h3>📞 TELEPHONE ETIQUETTE — 7 Steps to Perfection</h3>
+        <ol><li>Answering the Call</li><li>Introduction</li><li>Full Attention</li><li>Take Notes & Repeat</li><li>Avoid Annoying Habits</li><li>Handle Calls Professionally</li><li>End Positively</li></ol>
+        <h3>🗣️ Language Do's & Don'ts</h3>
+        <ul><li><strong>Avoid:</strong> "Hang on." "Who's calling?" "I can't help you." "Your problem / complaint" "She's in a meeting."</li><li><strong>Say Instead:</strong> "May I put you on hold?" "May I say who is calling, please?" "I'll speak to my manager about your concern." "Your concern / question / this situation" "She's unavailable, but I expect her back at 3:00 PM."</li></ul>
+        <h3>✉️ EMAIL ETIQUETTE – Should / Shouldn't</h3>
+        <ul><li><strong>Should:</strong> Write in a formal style, State purpose in subject box, Write a full sentence in the subject, Leave spaces between paragraphs, Sign with full name.</li><li><strong>Shouldn't:</strong> Use first name for employer, Use contractions (I'm, I've), Use abbreviations / ALL CAPS.</li></ul>
+        <p><strong>Greetings:</strong> Dear Sir / Dear Mr. Silva (avoid "Hi Kamal" or "Hey there")<br><strong>Closings:</strong> Yours sincerely / Regards (avoid "Take care" or "See you")</p>
+        <div class="reflection-box"><strong>✨ Personal Reflection:</strong> The lecture on telephone and email etiquette helped show how tricky phone calls and emails can get in a professional setting. It feels like word choice matters more than I thought before. When I have to answer calls now or write emails I will probably pay more attention to tone. Professional communication requires clarity, respect, and proper language.</div>
+      `
+    },
+    8: {
+      title: "Negotiation Skills",
+      lecturer: "Mrs. Maneesha Aishcharya",
+      category: "Leadership",
+      shortDesc: "BATNA, strategies, win-win",
+      img: "images/topic8.png",
+      fullContent: `
+        <h2>🤝 08 Negotiation Skills</h2>
+        <p><strong>Conducted by:</strong> Mrs. Maneesha Aishcharya</p>
+        <p>“You do not get what you want. You get what you negotiate.” – Harvey Mackay</p>
+        <h3>❓ What is Negotiation?</h3>
+        <p>An organized process where two or more parties make offers and counter-offers until mutually agreeable terms are reached which meet business goals and long term relationships.</p>
+        <h3>💎 7 Key Principles</h3>
+        <ol><li>People Before Problems.</li><li>Trust and Verify.</li><li>Focus on Interests.</li><li>Invest in Options.</li><li>Divide with Reason.</li><li>Mind Power.</li><li>Co-own the Process.</li></ol>
+        <h3>📊 The Negotiation Process</h3>
+        <ul><li><strong>Preparation:</strong> Preparing in advance can improve your confidence, give you clear goals to work toward, and provide a strategy to base your approach on.</li><li><strong>Bargaining:</strong> Bargaining is about creating value for both you and other parties despite your differences.</li><li><strong>Closing:</strong> Closing a negotiation can mean coming to an agreement or ending the discussion without reaching one.</li><li><strong>Learning:</strong> Reflecting on the process and learning from your experiences enables you to become a better negotiator.</li></ul>
+        <h3>♟️ BATNA – Best Alternative To a Negotiated Agreement</h3>
+        <ul><li>The Core Value: Our BATNA is a strategy. Our BATNA is our alternatives and BATNA is our worst case scenario if the negotiations were to break down rather than just the exit point.</li><li>To prepare for a BATNA, list the alternatives, assess the alternatives and chose the one to be your walk away point, reassess as negotiation progresses.</li></ul>
+        <h3>💬 Communication Skills</h3>
+        <p>Active Listening, Effective Questioning, Building Rapport, Strategic Empathy, Creating Win-Win Solutions.</p>
+        <h3>⚠️ Common Mistakes</h3>
+        <p>Lack of Preparation, Ignoring BATNA, Emotional Reactions, Cognitive Biases, Poor Communication.</p>
+        <h3>🔒 Closing the Deal</h3>
+        <p>Closing a deal is all about maintaining momentum, knowing when to ask and structure, and also the importance of all three working together. In order to keep negotiations moving there is need to structure points of reference and deadlines or take a "shut-down" approach and ask. When things start getting out of control, strategically taking a break and bringing in a third party can help restore objectivity, and if you still aren't certain, using a contingent contract to create security and conditionality can also help seal a deal.</p>
+        <div class="reflection-box"><strong>✨ Personal Reflection:</strong> After this lecture I have learned that negotiation is not about beating people, it's about creating positive outcome. I also found the concept of BATNA very informative – having an alternative plans makes you less anxious and more confident. The role play exercises proved useful, and I found the whole process of discovering the distinction between positions and interests to be very beneficial in real life professional contexts.</div>
+      `
+    },
+    9: {
+      title: "Grooming Etiquettes",
+      lecturer: "Ms. Oshini Wimalasena",
+      category: "Personal Growth",
+      shortDesc: "Professional appearance, first impression",
+      img: "images/topic9.png",
+      fullContent: `
+        <h2>👔 09 Grooming Etiquettes</h2>
+        <p><strong>Conducted by:</strong> Ms. Oshini Wimalasena</p>
+        <p>The lecturer changed my mind on the meaning of professionalism. Before this lecture, I always think being a professional means looking good, which is a quite superficial assumption. Professionalism is now, in my mind, a sum of factors such as good look, skillful communication, good manner, politeness and values within ourselves.</p>
+        <h3>📋 My Professional Identity Map</h3>
+        <p><strong>Professionalism = Knowledge + Appearance + Behaviour</strong></p>
+        <h3>🧼 Grooming Essentials & Key Learnings</h3>
+        <ul><li>Cleanliness: makes one feel confident, respected.</li><li>Hair & Face: a neat appearance gives a professional impression.</li><li>Clothing: should be appropriate to the event.</li><li>Jewellery & Accessories: should be elegant and professional.</li><li>Body Language: postured with confidence, eye contact and expressions portray confidence.</li></ul>
+        <h3>✨ The First Impression Formula</h3>
+        <p>Appearance + Communication + Attitude = Professional Image</p>
+        <h3>✅ Professional Etiquette Skills – Do's & Avoid</h3>
+        <ul><li><strong>Do's:</strong> Be punctual, Respect others, Listen actively, Use polite language, Maintain professional manners.</li><li><strong>Avoid:</strong> Poor hygiene, Negative attitude, Interrupting others, Unprofessional communication.</li></ul>
+        <h3>🏢 Workplace Behaviour</h3>
+        <p>Professional etiquette helps to: Develop Teamwork, Foster a positive workplace atmosphere, Enhance communication.</p>
+        <div class="reflection-box"><strong>✨ Personal Reflection:</strong> I learnt from this lecture that being professional is beyond just clothes and how we communicate and behave are the things that make us to look professional as well as confident, self- disciplined and be respectful to others. In future I will improve my appearance, speaking and non-verbal skills and workplace mannerism to build up my professional image.</div>
+      `
+    },
+    10: {
+      title: "Dining Etiquettes",
+      lecturer: "Ms. Samudini Sandalika",
+      category: "Personal Growth",
+      shortDesc: "Table manners, cultural awareness",
+      img: "images/topic10.png",
+      fullContent: `
+        <h2>🍽️ 10 Dining Etiquettes</h2>
+        <p><strong>Conducted by:</strong> Ms. Samudini Sandalika</p>
+        <p>"Etiquette is not about being perfect but it's about being comfortable". This lecture has truly highlighted the fact that dining etiquette does not solely exist for restaurant scenarios but etiquette actually has a function for day-to-day living as it can be used in business and social environments and it can show comfort and respect as well as understand cultures.</p>
+        <h3>❓ Why Dining Etiquette Matters</h3>
+        <ul><li>Creates favorable first impressions.</li><li>Boosts business meal and networking confidence.</li><li>Shows respect for hosts and guests.</li><li>Builds culture intelligence and social skills.</li><li>Increases readiness for the profession.</li></ul>
+        <h3>📏 Essential Table Rules I Learned</h3>
+        <ol><li>BMW Rule: Bread Left, Meal Centre, Water Right</li><li>Outside-In Rule: Use outer utensils first.</li><li>Napkin First: Place napkin on lap immediately.</li><li>Host First: Start eating after the host.</li><li>Phone Away: Give full attention to people.</li></ol>
+        <h3>🍽️ Professional Dining Behaviour</h3>
+        <ul><li>Sit up at the table with our body not on it.</li><li>Don't speak with food in our mouth.</li><li>Don't talk to anyone other than who is speaking to us.</li><li>When somebody speaks to us, we should speak back to that person and address them.</li><li>Don't reach over people and the table for food, get somebody else to pass it to us.</li><li>Don't overstep our personal space, lean into a person.</li></ul>
+        <h3>💬 The Art of Dining Conversations</h3>
+        <p><strong>Appropriate Topics:</strong> Activities and interests, Travel, Cinema and books, Successes in school / university, Community events.<br><strong>Topics to Avoid:</strong> Politics and religion, Salaries and money matters, Gossip, Negative comments about food, People's appearance.</p>
+        <h3>🌍 Cultural Awareness in Dining</h3>
+        <ul><li>Japan: Making slurping sounds when eating noodles can be seen as a form of praise.</li><li>China: Serving elders first shows respect.</li><li>India: Traditionally eat with the right hand.</li><li>France: Meals are slow and multi-course.</li><li>Middle East: Wait for the host to begin.</li><li>Mexico: Bringing a gift for the host is appreciated.</li></ul>
+        <h3>📵 New Trends – Responsible Technology Use</h3>
+        <ol><li>Put the mobile phone down when I am eating my food.</li><li>Do not be looking at the mobile phone under the table.</li><li>Use food photography sparingly.</li><li>Step out of the room if I need to take an emergency phone call.</li><li>Engage completely with the company.</li></ol>
+        <div class="reflection-box"><strong>✨ Personal Reflection:</strong> I really enjoyed the role-playing dinner party, it was very satisfying to feel that our table was the ones in power of bringing two political arguments under control. Hands-on practice and seeing other tables navigate through various situations made me realize just how involved dining etiquette really is in resolving disputes and in projecting professionalism. After this lecture I vow to integrate what I learned not just into family dinners but also at how I use my cell phone, but most importantly in talking with others, it made me see that meal times are a way of honoring other people, building up our confidence and also leaving a good impression on people that you interact with at home as well as at work.</div>
+      `
+    }
+  };
 
   const lecturers = [
     { name:"Mrs. Hubika Joshi", subject:"Emotional Intelligence", intro:"Expert in human psychology", img:"images/topic1.png" },
@@ -333,13 +491,17 @@
   ];
 
   let currentModuleIndex = 0;
-  let filteredModules = [...modules];
+  let filteredModules = Object.values(modulesData);
+  const modal = document.getElementById('moduleModal');
+  const modalBody = document.getElementById('modalBody');
+  const prevBtn = document.getElementById('prevModule');
+  const nextBtn = document.getElementById('nextModule');
 
   function renderModules() {
     const grid = document.getElementById('modulesGrid');
     const searchTerm = document.getElementById('moduleSearch').value.toLowerCase();
     const filterCat = document.getElementById('moduleFilter').value;
-    filteredModules = modules.filter(m => 
+    filteredModules = Object.values(modulesData).filter(m => 
       (m.title.toLowerCase().includes(searchTerm) || m.lecturer.toLowerCase().includes(searchTerm)) &&
       (filterCat === 'all' || m.category === filterCat)
     );
@@ -359,9 +521,8 @@
   function openModule(idx) {
     currentModuleIndex = idx;
     const m = filteredModules[idx];
-    const modal = document.getElementById('moduleModal');
-    document.getElementById('modalBody').innerHTML = `
-      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);">
+    modalBody.innerHTML = `
+      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem;">
         <img src="${m.img}" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent);" onerror="this.src='https://ui-avatars.com/api/?name=${m.lecturer[0]}&background=C9A87C&size=70'">
         <div><strong style="font-size: 1.2rem;">${m.lecturer}</strong><br><span style="color: var(--accent-dark);">Lecturer</span></div>
       </div>
@@ -382,50 +543,38 @@
     `).join('');
   }
 
-  function animateStats() {
-    let modulesCount = modules.length;
-    let counter = 0;
-    const statEl = document.getElementById('statModules');
-    const interval = setInterval(() => {
-      if(counter < modulesCount) { counter++; statEl.innerText = counter; }
-      else clearInterval(interval);
-    }, 30);
-  }
+  // Navigation buttons (single set)
+  prevBtn.onclick = () => {
+    if (currentModuleIndex > 0) openModule(currentModuleIndex - 1);
+    else alert('You are at the first module');
+  };
+  nextBtn.onclick = () => {
+    if (currentModuleIndex < filteredModules.length - 1) openModule(currentModuleIndex + 1);
+    else alert('You have reached the last module');
+  };
 
-  // Dark Mode
+  // Dark mode & UI helpers
   const darkToggle = document.getElementById('darkModeToggle');
   darkToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark');
     localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
   });
-  if(localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
+  if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
 
   window.addEventListener('scroll', () => {
-    const winScroll = document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - window.innerHeight;
-    const scrolled = (winScroll / height) * 100;
+    const scrolled = (document.documentElement.scrollTop / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
     document.getElementById('progressBar').style.width = scrolled + '%';
-    document.getElementById('backToTop').classList.toggle('show', winScroll > 300);
+    document.getElementById('backToTop').classList.toggle('show', window.scrollY > 300);
   });
-  document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
-
-  document.querySelector('.modal-close').onclick = () => document.getElementById('moduleModal').style.display = 'none';
-  document.getElementById('prevModule').onclick = () => {
-    if(currentModuleIndex > 0) openModule(currentModuleIndex-1);
-    else alert('First module');
-  };
-  document.getElementById('nextModule').onclick = () => {
-    if(currentModuleIndex < filteredModules.length-1) openModule(currentModuleIndex+1);
-    else alert('Last module');
-  };
-  window.onclick = (e) => { if(e.target === document.getElementById('moduleModal')) document.getElementById('moduleModal').style.display = 'none'; };
-
+  document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+  document.querySelector('.modal-close').onclick = () => modal.style.display = 'none';
+  window.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; };
   document.getElementById('moduleSearch').addEventListener('input', renderModules);
   document.getElementById('moduleFilter').addEventListener('change', renderModules);
   document.getElementById('printBtn').addEventListener('click', () => window.print());
   document.getElementById('shareBtn').addEventListener('click', () => {
-    if(navigator.share) navigator.share({title:'Kalana Premasiri Portfolio', url:window.location.href});
-    else alert('Share not supported');
+    if (navigator.share) navigator.share({title:'G.K.L. Premasiri Portfolio', url:window.location.href});
+    else alert('Share not supported, copy the link manually');
   });
 
   // Particle background
@@ -433,7 +582,7 @@
   const ctx = canvas.getContext('2d');
   let particles = [];
   function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-  function createParticles() { for(let i=0;i<60;i++) particles.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, radius:Math.random()*2+1, speedX:(Math.random()-0.5)*0.4, speedY:(Math.random()-0.5)*0.4}); }
+  function createParticles() { for (let i=0;i<60;i++) particles.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, radius:Math.random()*2+1, speedX:(Math.random()-0.5)*0.4, speedY:(Math.random()-0.5)*0.4}); }
   function drawParticles() {
     ctx.clearRect(0,0,canvas.width,canvas.height);
     ctx.fillStyle = '#C9A87C';
@@ -443,20 +592,21 @@
   window.addEventListener('resize', resizeCanvas);
   resizeCanvas(); createParticles(); drawParticles();
 
+  // Typing animation for hero name
   const heroTitle = document.querySelector('.hero-content h1');
   const originalText = heroTitle.innerText;
   heroTitle.innerText = '';
   let i=0;
   function typeWriter() {
-    if(i < originalText.length) { heroTitle.innerText += originalText.charAt(i); i++; setTimeout(typeWriter, 60); }
+    if (i < originalText.length) { heroTitle.innerText += originalText.charAt(i); i++; setTimeout(typeWriter, 60); }
   }
   setTimeout(typeWriter, 400);
 
   window.addEventListener('load', () => {
     document.getElementById('loader').classList.add('hidden');
-    animateStats();
     renderModules();
     renderLecturers();
+    document.getElementById('statModules').innerText = Object.keys(modulesData).length;
   });
 </script>
 </body>
